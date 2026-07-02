@@ -1,0 +1,52 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "pat-fhir-1",
+        "identifier": [{ "system": "urn:mrn", "value": "MRN-FHIR-1" }],
+        "name": [{ "family": "Nguyen", "given": ["Maria"] }],
+        "gender": "female",
+        "birthDate": "1988-03-12"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-1",
+        "status": "final",
+        "category": [{ "coding": [{ "code": "vital-signs" }] }],
+        "code": { "coding": [{ "system": "http://loinc.org", "code": "8867-4", "display": "Heart rate" }] },
+        "subject": { "reference": "Patient/pat-fhir-1" },
+        "effectiveDateTime": "2026-01-05T08:30:00Z",
+        "valueQuantity": { "value": 68, "unit": "beats/minute" }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-2",
+        "status": "final",
+        "category": [{ "coding": [{ "code": "vital-signs" }] }],
+        "code": { "coding": [{ "system": "http://loinc.org", "code": "8310-5", "display": "Body temperature" }] },
+        "subject": { "reference": "Patient/pat-fhir-1" },
+        "effectiveDateTime": "2026-01-05T08:31:00Z",
+        "valueQuantity": { "value": 36.8, "unit": "Cel" }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-3",
+        "status": "final",
+        "category": [{ "coding": [{ "code": "vital-signs" }] }],
+        "code": { "coding": [{ "system": "http://loinc.org", "code": "8867-4", "display": "Heart rate" }] },
+        "subject": { "reference": "Patient/pat-fhir-1" },
+        "effectiveDateTime": "2026-01-06T08:30:00Z",
+        "valueQuantity": { "value": 74, "unit": "beats/minute" }
+      }
+    }
+  ]
+}

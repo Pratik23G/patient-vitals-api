@@ -1,0 +1,17 @@
+# Optional: spin up Postgres locally to practice the "real" (non-SQLite) path.
+#   docker compose up -d
+#   export DATABASE_URL=postgresql+psycopg://vitals:vitals@localhost:5432/vitals
+#   alembic upgrade head
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: vitals
+      POSTGRES_PASSWORD: vitals
+      POSTGRES_DB: vitals
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:
