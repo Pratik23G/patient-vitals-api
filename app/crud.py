@@ -79,4 +79,17 @@ def query_observations(
     The tests in tests/test_observations.py already assert the exact behavior above,
     so run `pytest` as you go and make them green.
     """
-    raise NotImplementedError("Implement query_observations — see TODO(pratik).")
+    stmt = select(models.Observation).where(models.Observation.patient_id == patient_id)
+
+    if code:
+        stmt = stmt.where(models.Observation.code == code)
+
+    if start:
+        stmt = stmt.where(models.Observation.effective_time >= start)
+
+    if end:
+        stmt = stmt.where(models.Observation.effective_time <= end)
+   
+    stmt = stmt.order_by(models.Observation.effective_time.desc())
+
+    return list(db.execute(stmt).scalars())
